@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        PERPUSTAKAAN_PLACEHOLDER: "Perpustakaan STMIK Tazkia"
+        KAMPUS_PLACEHOLDER: "STMIK Tazkia"
+        PRODI_PLACEHOLDER: "Sistem Informasi"
+    container_name: katalog-rifqi
+    ports:
+      - "8102:80"
+    volumes:
+      - ./html/data/buku.json:/usr/share/nginx/html/data/buku.json
+    secrets:
+      - username
+      - password
+    restart: unless-stopped
+
+secrets:
+  username:
+    file: ./secrets/username.txt
+  password:
+    file: ./secrets/password.txt

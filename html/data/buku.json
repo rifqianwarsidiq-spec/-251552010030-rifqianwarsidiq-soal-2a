@@ -1,0 +1,13 @@
+{
+  "perpustakaan": "Perpustakaan STMIK Tazkia",
+  "koleksi": [
+    { "judul": "Docker Deep Dive", "penulis": "Nigel Poulton", "genre": "Teknologi", "tahun": 2023 },
+    { "judul": "The Linux Command Line", "penulis": "William Shotts", "genre": "Teknologi", "tahun": 2022 },
+    { "judul": "Computer Networking: A Top-Down Approach", "penulis": "Kurose & Ross", "genre": "Jaringan", "tahun": 2021 },
+    { "judul": "Clean Code", "penulis": "Robert C. Martin", "genre": "Rekayasa Perangkat Lunak", "tahun": 2020 },
+    { "judul": "One Piece Vol. 1", "penulis": "Eiichiro Oda", "genre": "Komik", "tahun": 1997 },
+    { "judul": "Naruto Vol. 1", "penulis": "Masashi Kishimoto", "genre": "Komik", "tahun": 1999 },
+    { "judul": "Doraemon Vol. 1", "penulis": "Fujiko F. Fujio", "genre": "Komik", "tahun": 1969 },
+    { "judul": "Dragon Ball Vol. 1", "penulis": "Akira Toriyama", "genre": "Komik", "tahun": 1984 }
+  ]
+}

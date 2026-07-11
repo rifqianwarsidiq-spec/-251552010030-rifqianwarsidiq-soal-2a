@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PERPUSTAKAAN_PLACEHOLDER — Beranda</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="/auth-config.js"></script>
+  <script>if (sessionStorage.getItem('logged_in') !== '1') window.location.href = '/login.html';</script>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index.html" class="active">🏠 Beranda</a>
+      <a href="katalog.html">📚 Katalog</a>
+      <a href="tentang.html">ℹ️ Tentang</a>
+      <a href="#" class="btn-logout" onclick="logout(); return false;">🔒 Logout</a>
+    </nav>
+    <div class="hero">
+      <span class="hero-emoji">📖</span>
+      <h1>PERPUSTAKAAN_PLACEHOLDER</h1>
+      <p>Sistem katalog buku digital untuk mata kuliah Networking and Cloud Computing — KAMPUS_PLACEHOLDER 2026.</p>
+      <a href="katalog.html" class="btn">Lihat Katalog</a>
+      <a href="tentang.html" class="btn btn-outline">Tentang Kami</a>
+    </div>
+    <div class="card">
+      <h2>📌 Tentang Perpustakaan</h2>
+      <p>PERPUSTAKAAN_PLACEHOLDER adalah sistem digital PRODI_PLACEHOLDER KAMPUS_PLACEHOLDER yang menyediakan akses katalog koleksi buku secara online.</p>
+    </div>
+    <div class="card">
+      <h2>📚 Mata Kuliah</h2>
+      <p><strong>Networking and Cloud Computing</strong> — UAS Praktik 2026</p>
+      <p>Topik: Docker Compose, Dockerfile, ARG, Bind Mount, Volumes, Secrets, dan Login/Logout.</p>
+    </div>
+    <footer>
+      <p>Dibangun dengan Docker &amp; Nginx · Networking and Cloud Computing · UAS 2026</p>
+    </footer>
+  </div>
+  <script>
+    function logout() {
+      sessionStorage.removeItem('logged_in');
+      window.location.href = '/login.html';
+    }
+  </script>
+</body>
+</html>

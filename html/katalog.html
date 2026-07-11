@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PERPUSTAKAAN_PLACEHOLDER — Katalog</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="/auth-config.js"></script>
+  <script>if (sessionStorage.getItem('logged_in') !== '1') window.location.href = '/login.html';</script>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index.html">🏠 Beranda</a>
+      <a href="katalog.html" class="active">📚 Katalog</a>
+      <a href="tentang.html">ℹ️ Tentang</a>
+      <a href="#" class="btn-logout" onclick="logout(); return false;">🔒 Logout</a>
+    </nav>
+    <div class="page-header">
+      <h1>📚 Katalog Buku</h1>
+      <p>Data koleksi dimuat secara dinamis dari file JSON menggunakan <code>fetch()</code>.</p>
+    </div>
+    <div id="list-buku">
+      <p>⏳ Memuat data koleksi...</p>
+    </div>
+    <footer>
+      <p>Dibangun dengan Docker &amp; Nginx · Networking and Cloud Computing · UAS 2026</p>
+    </footer>
+  </div>
+  <script>
+    function logout() {
+      sessionStorage.removeItem('logged_in');
+      window.location.href = '/login.html';
+    }
+
+    fetch('/data/buku.json')
+      .then(r => r.json())
+      .then(data => {
+        const container = document.getElementById('list-buku');
+        const header = document.createElement('h2');
+        header.style.cssText = 'color:#a29bfe; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:16px;';
+        header.textContent = data.perpustakaan + ' — ' + data.koleksi.length + ' Buku';
+        container.innerHTML = '';
+        container.appendChild(header);
+        const grid = document.createElement('div');
+        grid.className = 'grid-2';
+        grid.innerHTML = data.koleksi.map(b => `
+          <div class="card">
+            <h2>📘 ${b.judul}</h2>
+            <p>Penulis: <strong>${b.penulis}</strong></p>
+            <p>Genre: ${b.genre}</p>
+            <p>Tahun: ${b.tahun}</p>
+          </div>
+        `).join('');
+        container.appendChild(grid);
+      })
+      .catch(err => {
+        document.getElementById('list-buku').innerHTML =
+          '<div class="card"><p>❌ Gagal memuat data: ' + err.message + '</p></div>';
+      });
+  </script>
+</body>
+</html>

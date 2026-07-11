@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PERPUSTAKAAN_PLACEHOLDER — Tentang</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="/auth-config.js"></script>
+  <script>if (sessionStorage.getItem('logged_in') !== '1') window.location.href = '/login.html';</script>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index.html">🏠 Beranda</a>
+      <a href="katalog.html">📚 Katalog</a>
+      <a href="tentang.html" class="active">ℹ️ Tentang</a>
+      <a href="#" class="btn-logout" onclick="logout(); return false;">🔒 Logout</a>
+    </nav>
+    <div class="page-header">
+      <h1>ℹ️ Tentang Perpustakaan</h1>
+      <p>Informasi mengenai PERPUSTAKAAN_PLACEHOLDER KAMPUS_PLACEHOLDER.</p>
+    </div>
+    <div class="card">
+      <h2>🏛️ Profil</h2>
+      <p>PERPUSTAKAAN_PLACEHOLDER adalah unit layanan informasi di KAMPUS_PLACEHOLDER yang bertugas mengelola dan menyediakan akses ke sumber-sumber ilmu pengetahuan.</p>
+    </div>
+    <div class="card">
+      <h2>🛠️ Teknologi yang Digunakan</h2>
+      <p>Sistem ini dibangun menggunakan teknologi container modern:</p>
+      <div style="margin-top:12px;">
+        <span class="skill-badge">Docker</span>
+        <span class="skill-badge">Nginx</span>
+        <span class="skill-badge">Docker Secrets</span>
+        <span class="skill-badge">Bind Mount</span>
+        <span class="skill-badge">ARG Dockerfile</span>
+      </div>
+    </div>
+    <footer>
+      <p>Dibangun dengan Docker &amp; Nginx · Networking and Cloud Computing · UAS 2026</p>
+    </footer>
+  </div>
+  <script>
+    function logout() {
+      sessionStorage.removeItem('logged_in');
+      window.location.href = '/login.html';
+    }
+  </script>
+</body>
+</html>

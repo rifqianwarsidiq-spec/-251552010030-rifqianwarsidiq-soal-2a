@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .login-wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-card {
+      width: 100%;
+      max-width: 380px;
+      padding: 40px 36px;
+    }
+    .login-card h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+    .login-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--primary-light);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus {
+      border-color: var(--primary);
+    }
+    .btn-login {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-login:hover { background: #5a52d5; }
+    .error-msg {
+      margin-top: 14px;
+      padding: 10px 14px;
+      background: rgba(253,121,168,0.12);
+      border: 1px solid rgba(253,121,168,0.3);
+      border-radius: 8px;
+      color: var(--secondary);
+      font-size: 0.85rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-wrap">
+    <div class="card login-card">
+      <h1>🔐 Login</h1>
+      <p>Masukkan kredensial untuk mengakses halaman ini.</p>
+      <form id="login-form" onsubmit="doLogin(event)">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="username" placeholder="Username" autocomplete="username" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="password" placeholder="Password" autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="btn-login">Masuk</button>
+        <div class="error-msg" id="error-msg">❌ Username atau password salah.</div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/auth-config.js"></script>
+  <script>
+    if (sessionStorage.getItem('logged_in') === '1') {
+      window.location.href = '/index.html';
+    }
+
+    function doLogin(e) {
+      e.preventDefault();
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      if (user === AUTH_USER && pass === AUTH_PASS) {
+        sessionStorage.setItem('logged_in', '1');
+        window.location.href = '/index.html';
+      } else {
+        document.getElementById('error-msg').style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
